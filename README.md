@@ -6,120 +6,152 @@
 
 <p align="center">
 
-NETRA is a multi-layer safety-assistance system designed for open-cast mining haul roads, combining **Edge AI, sensor fusion, V2V communication, vehicle telemetry, local driver alerts, and a real-time command center**.
+NETRA is a multi-layer safety-assistance system designed for open-cast mining haul roads, combining **vehicle sensing, Edge AI, sensor fusion, V2V communication, vehicle telemetry, local driver alerts, and a real-time command center**.
 
 <br><br>
 
 <a href="https://sih-2026-netra.vercel.app/#/command-center">
-  <strong>🚀 OPEN LIVE COMMAND CENTER</strong>
+  <strong>🚀 OPEN LIVE NETRA COMMAND CENTER</strong>
 </a>
 
 </p>
 
 ---
 
-## 🌐 Live Demo
+# 🌐 Live Demo
 
-### 🖥️ NETRA Command Center
+## 🖥️ NETRA Command Center
 
-👉 **Live Dashboard:**
-https://sih-2026-netra.vercel.app/#/command-center
+### 🚀 [Open Live Command Center](https://sih-2026-netra.vercel.app/#/command-center)
 
-The command center provides a centralized view of:
+The NETRA Command Center provides a centralized operator view of:
 
-* 🚛 Live vehicle locations
+* 🚛 Vehicle locations
 * ⚠️ Active safety alerts
 * 📡 Communication status
 * 📊 Vehicle telemetry
-* 🛣️ Haul-road and blind-curve conditions
+* 🛣️ Haul-road conditions
 * 🔴 Risk levels
-* 📋 Alert and incident information
+* 🚨 Incidents and alerts
+* 🗺️ Fleet and route information
 
 ---
 
-# 🎯 Problem
+# 🎯 Problem Statement
 
-Open-cast mining haul roads operate with large HEMM dumpers in challenging conditions.
+Open-cast mining operations use large **Heavy Earth Moving Machinery (HEMM)** on haul roads where visibility, communication, and reaction time can become critical safety factors.
 
-Key safety challenges include:
+Major challenges include:
 
-* 🌫️ Dense fog and severely reduced visibility
+* 🌫️ Dense fog and reduced visibility
 * 🛣️ Blind curves and restricted line-of-sight
 * 🚛 Multiple heavy vehicles operating simultaneously
 * 📡 Intermittent or unavailable communication
-* ⚠️ Unexpected obstacles and unsafe proximity
+* ⚠️ Unexpected obstacles and vehicle proximity
 * ⏱️ Limited reaction time during critical situations
 
-Traditional monitoring can depend heavily on driver visibility, manual observation, and network availability.
-
-**NETRA adds an intelligent, multi-layer safety layer that can detect and communicate potential hazards locally while also providing centralized fleet monitoring.**
+NETRA addresses these challenges by creating a **multi-layer safety-assistance architecture** that combines local sensing and warning with centralized fleet monitoring.
 
 ---
 
 # 💡 NETRA Solution
 
-NETRA combines:
+NETRA connects the vehicle, sensing layer, communication systems, backend, and command center into one safety ecosystem.
 
-**On-Vehicle Sensing + Edge Processing + V2V Communication + Long-Range Communication + Centralized Monitoring**
+The system is designed around four major principles:
 
-### Safety Pipeline
+> **Sense → Assess → Communicate → Warn**
+
+### Core Safety Pipeline
 
 ```text
 Sensors
-   ↓
-ESP32 Edge Controller
-   ↓
-Sensor Fusion / Risk Assessment
-   ↓
-┌─────────────────────┬─────────────────────┐
-│                     │                     │
-▼                     ▼                     ▼
-Local Alert        V2V Communication     Telemetry
-│                     │                     │
-▼                     ▼                     ▼
-OLED / LED /       nRF24 / LoRa        FastAPI
-Buzzer                                  Backend
-                                          │
-                                          ▼
-                                   React Dashboard
+   │
+   ▼
+ESP32 / Edge Controller
+   │
+   ▼
+Sensor Fusion & Risk Assessment
+   │
+   ├───────────────┬────────────────┐
+   ▼               ▼                ▼
+Local Alert       V2V             Telemetry
+   │               │                │
+   ▼               ▼                ▼
+OLED / LED /    nRF24 / LoRa    FastAPI Backend
+Buzzer                              │
+                                    ▼
+                             React Command Center
 ```
 
 ---
 
 # 🏗️ System Architecture
 
-![NETRA System Architecture](docs/IMG_20260929_163059.jpg.jpeg)
+The following architecture shows how NETRA connects vehicle sensors, ESP32, Edge AI, driver alerts, V2V communication, LoRa, the backend, database, and the command center.
 
-NETRA follows a layered architecture:
+<p align="center">
+  <img src="docs/images/netra-architecture.png" alt="NETRA System Architecture" width="100%">
+</p>
 
-### 1. 🚛 Vehicle Layer
+### Architecture Overview
 
-The prototype vehicle collects information from multiple sensors and communicates with the edge controller.
+The NETRA architecture consists of the following layers:
 
-### 2. 🧠 Edge Layer
+### 1. 🚛 Vehicle & Sensor Layer
 
-The ESP32 performs local processing and safety-state generation, reducing dependence on continuous cloud connectivity.
+The prototype vehicle collects information from multiple sensing and positioning modules, including:
+
+* GPS
+* LiDAR / distance sensing
+* Radar
+* Camera
+* Vehicle telemetry
+
+The collected information is passed to the embedded controller for processing.
+
+### 2. 🧠 Edge AI Layer
+
+The Edge AI layer performs local processing and supports:
+
+* Sensor fusion
+* Object detection
+* Fog / visibility detection
+* Risk assessment
+* Local safety-state generation
+
+This reduces dependence on continuous remote connectivity for immediate warning decisions.
 
 ### 3. 📡 Communication Layer
 
-Multiple communication mechanisms are used for different operating conditions:
+NETRA uses multiple communication mechanisms:
 
-* nRF24-based local V2V communication
-* LoRa long-range communication
-* Wi-Fi / Internet communication
+* **nRF24** — local vehicle-to-vehicle communication
+* **LoRa** — long-range communication
+* **Wi-Fi / Internet** — backend connectivity
+* **WebSocket** — real-time dashboard updates
 
-### 4. 🖥️ Command Center
+### 4. 🔔 Driver Interface
 
-The React-based command center receives telemetry and safety information through the FastAPI backend and WebSocket communication.
-
-### 5. 🔔 Driver Interface
-
-The vehicle can provide immediate local warnings through:
+The vehicle provides local warnings through:
 
 * OLED displays
 * LED indicators
 * Buzzer
 * Safety-state information
+
+The driver interface is designed to provide immediate awareness when a risk condition is detected.
+
+### 5. 🖥️ Command Center
+
+The command center receives vehicle and safety information through the backend and provides an operator-facing view of:
+
+* Vehicle locations
+* Alerts
+* Risk conditions
+* Fleet information
+* Telemetry
+* Route and blind-curve conditions
 
 ---
 
@@ -129,31 +161,33 @@ The vehicle can provide immediate local warnings through:
 
 * GPS-based vehicle positioning
 * Vehicle identification
-* Real-time telemetry
-* Vehicle status monitoring
-* Fleet-level monitoring
+* Vehicle telemetry
+* Fleet monitoring
+* Vehicle status tracking
 
 ## 🌫️ Hazard & Proximity Detection
 
-NETRA can integrate sensor information such as:
+NETRA's architecture can integrate:
 
 * LiDAR / ToF sensing
 * Radar
 * Camera
 * GPS
-* Environmental / fog sensing
+* Environmental / fog information
 * Vehicle motion data
 
 ## 🧠 Edge Intelligence
 
-Local processing enables rapid safety decisions without requiring every decision to travel to a remote server.
+Local processing allows the system to generate safety information close to the vehicle.
 
 ```text
 Sensor Data
      ↓
 Preprocessing
      ↓
-Feature Extraction
+Sensor Fusion
+     ↓
+Object / Hazard Detection
      ↓
 Risk Assessment
      ↓
@@ -162,158 +196,91 @@ Safety State
 
 ## 📡 Multi-Layer Communication
 
-| Communication    | Purpose                               |
-| ---------------- | ------------------------------------- |
-| nRF24L01         | Local V2V communication               |
-| LoRa             | Long-range communication              |
-| Wi-Fi / Internet | Backend & command-center connectivity |
-| WebSocket        | Real-time dashboard updates           |
+| Communication    | Purpose                     |
+| ---------------- | --------------------------- |
+| nRF24L01         | Local V2V communication     |
+| LoRa             | Long-range communication    |
+| Wi-Fi / Internet | Backend connectivity        |
+| WebSocket        | Real-time dashboard updates |
 
 ## 🔊 Driver Alerts
 
-When a risk condition is detected, the vehicle interface can provide:
+The prototype driver interface supports:
 
 * 🟢 Safe indication
-* 🟡 Caution warning
-* 🔴 Hazard warning
+* 🟡 Caution indication
+* 🔴 Hazard indication
 * OLED information
-* LED indication
-* Audible buzzer alert
+* LED warning
+* Audible buzzer
 
 ## 🖥️ Real-Time Command Center
 
-The dashboard provides:
+The command center provides:
 
-* Live vehicle map
-* Risk monitoring
-* Active alerts
-* Vehicle telemetry
-* Communication status
-* Incident information
-* Fleet monitoring
-* Blind-curve safety information
+* 🗺️ Mine / haul-road visualization
+* 🚛 Vehicle tracking
+* ⚠️ Alert monitoring
+* 📊 Telemetry
+* 📡 Communication status
+* 🚨 Incident information
+* 🛣️ Blind-curve / route information
 
 ---
 
 # ⚠️ Risk Classification
 
-| Risk State | Example Condition                                        | Response                                        |
+| State      | Example Condition                                        | System Response                                 |
 | ---------- | -------------------------------------------------------- | ----------------------------------------------- |
-| 🟢 SAFE    | Normal operating conditions                              | Normal monitoring                               |
-| 🟡 CAUTION | Reduced visibility, approaching risk, or stale telemetry | Driver warning / recommended speed reduction    |
+| 🟢 SAFE    | Normal operating condition                               | Normal monitoring                               |
+| 🟡 CAUTION | Reduced visibility, approaching risk, or stale telemetry | Driver warning / safety recommendation          |
 | 🔴 HAZARD  | Critical proximity or high-risk condition                | Immediate local warning / safety recommendation |
 
 > Thresholds can be configured according to the deployment environment and validated through field testing.
 
 ---
 
-# 🚗 Prototype Hardware
+# 🤖 Edge AI & Sensor Fusion
 
-### Front View
-
-![NETRA Hardware Front](docs/images/IMG_20260929_163046.jpg.jpeg)
-
-The NETRA prototype integrates an embedded controller, vehicle drive system, sensing modules, communication modules, GPS, display interfaces, and local warning components.
-
-### Hardware Components
-
-| Component          | Purpose                                  |
-| ------------------ | ---------------------------------------- |
-| ESP32              | Edge controller & wireless communication |
-| GPS Module         | Vehicle positioning                      |
-| LoRa Module        | Long-range communication                 |
-| nRF24L01           | Local V2V communication                  |
-| LiDAR / ToF Sensor | Proximity measurement                    |
-| Ultrasonic Sensor  | Short-range distance sensing             |
-| Camera             | Visual sensing                           |
-| OLED Displays      | Driver information                       |
-| RGB LEDs           | Safety-state indication                  |
-| Buzzer             | Audible warning                          |
-| Motor Driver       | Prototype vehicle movement               |
-| DC Motors          | Vehicle propulsion                       |
-
-### Top View
-
-![NETRA Hardware Top View](docs/images/IMG_20260929_163059.jpg.jpeg)
-
----
-
-# 🔄 Working Methodology
-
-## Step 1 — Data Acquisition
-
-The vehicle collects information from sensors and communication modules.
+NETRA uses an Edge AI-oriented architecture where sensor information can be combined before generating a safety state.
 
 ```text
-GPS
-LiDAR / ToF
-Radar
-Camera
-Motion Sensors
-Communication Modules
-        ↓
-      ESP32
+                SENSOR INPUTS
+                     │
+       ┌─────────────┼─────────────┐
+       ▼             ▼             ▼
+     LiDAR          Radar        Camera
+       │             │             │
+       └─────────────┼─────────────┘
+                     ▼
+              Sensor Fusion
+                     ↓
+             Object Detection
+                     ↓
+              Risk Assessment
+                     ↓
+            Safety Classification
+             /        |        \
+            ▼         ▼         ▼
+          SAFE     CAUTION    HAZARD
 ```
 
-## Step 2 — Local Processing
-
-Sensor information is processed locally to generate relevant safety parameters.
-
-```text
-Raw Sensor Data
-      ↓
-Preprocessing
-      ↓
-Feature Extraction
-      ↓
-Risk Assessment
-```
-
-## Step 3 — Risk Evaluation
-
-The system evaluates factors such as:
+Potential safety parameters include:
 
 * Distance
 * Relative movement
 * Closing speed
 * Time-to-collision
+* Vehicle speed
 * Vehicle state
-* Communication status
-* Visibility / environmental conditions
-
-## Step 4 — Local Safety Response
-
-The vehicle can immediately communicate the safety state to the driver.
-
-```text
-Risk Detected
-     ↓
-┌────┼─────────┐
-▼    ▼         ▼
-OLED LED     Buzzer
-```
-
-## Step 5 — Remote Monitoring
-
-Telemetry and safety information are sent to the backend.
-
-```text
-Vehicle
-   ↓
-Communication Layer
-   ↓
-FastAPI Backend
-   ↓
-Database
-   ↓
-WebSocket / API
-   ↓
-React Command Center
-```
+* Communication health
+* Visibility conditions
 
 ---
 
-# 📡 Communication Architecture
+# 📡 V2V & Communication
+
+NETRA supports communication between vehicles and the command center through different communication layers.
 
 ```text
                     ┌──────────────┐
@@ -334,73 +301,163 @@ React Command Center
 
 ### nRF24L01
 
-Used for local vehicle-to-vehicle communication in the prototype.
+Used for local V2V communication between prototype vehicles.
 
 ### LoRa
 
-Provides a long-range, low-bandwidth communication path for telemetry and safety information.
+Provides a long-range communication path for telemetry and safety information.
 
 ### Wi-Fi / Internet
 
-Connects the vehicle/backend infrastructure with the live command center when network connectivity is available.
+Provides connectivity between the vehicle/backend infrastructure and the command center when network connectivity is available.
 
 ---
 
-# 🧠 Edge AI & Sensor Fusion
+# 🚗 NETRA Hardware Prototype
 
-NETRA's architecture supports local intelligence for rapid safety assessment.
+## Front View
+
+The following image shows the front view of the NETRA prototype vehicle.
+
+<p align="center">
+  <img src="docs/images/netra-hardware-front.jpg" alt="NETRA Hardware Front View" width="90%">
+</p>
+
+The prototype integrates:
+
+* ESP32 controller
+* Vehicle motors
+* Motor driver
+* Ultrasonic / distance sensing
+* Camera module
+* GPS
+* Communication modules
+* OLED display
+* LED indicators
+* Buzzer
+* Battery system
+* Supporting electronics
+
+---
+
+## Top View
+
+The top view provides an overall layout of the embedded electronics and vehicle hardware.
+
+<p align="center">
+  <img src="docs/images/netra-hardware-top.jpg" alt="NETRA Hardware Top View" width="90%">
+</p>
+
+The prototype layout contains the embedded controller, power system, motor driver, sensing modules, communication modules, displays, warning components, and drive system.
+
+---
+
+# 🔄 Working Methodology
+
+## Step 1 — Data Acquisition
+
+The vehicle collects information from sensors and communication modules.
 
 ```text
-             SENSOR INPUTS
-                  │
-        ┌─────────┼─────────┐
-        ▼         ▼         ▼
-      LiDAR      Radar     Camera
-        │         │         │
-        └─────────┼─────────┘
-                  ▼
-            Sensor Fusion
-                  ↓
-            Risk Assessment
-                  ↓
-          Safety Classification
-          /        |        \
-       SAFE     CAUTION    HAZARD
+GPS
+LiDAR / ToF
+Radar
+Camera
+Motion / Vehicle Data
+Communication Modules
+        │
+        ▼
+      ESP32
 ```
 
-Potential model inputs include:
+## Step 2 — Local Processing
+
+The collected information is processed locally.
+
+```text
+Raw Sensor Data
+      ↓
+Preprocessing
+      ↓
+Sensor Fusion
+      ↓
+Object / Hazard Detection
+      ↓
+Risk Assessment
+```
+
+## Step 3 — Risk Evaluation
+
+The system evaluates relevant safety parameters such as:
 
 * Distance
+* Relative movement
 * Closing speed
 * Time-to-collision
-* Acceleration
-* Gyroscope data
 * Vehicle speed
-* Communication health
-* Environmental conditions
+* Visibility
+* Communication status
+
+## Step 4 — Local Safety Response
+
+When a risk condition is detected:
+
+```text
+Risk Detected
+     │
+     ├─────────┬─────────┐
+     ▼         ▼         ▼
+   OLED       LED      Buzzer
+     │         │         │
+     └─────────┼─────────┘
+               ▼
+         Driver Warning
+```
+
+## Step 5 — Remote Monitoring
+
+Vehicle information can also be transmitted to the backend.
+
+```text
+Vehicle
+   ↓
+Communication Layer
+   ↓
+FastAPI Backend
+   ↓
+Database
+   ↓
+WebSocket / REST API
+   ↓
+React Command Center
+```
 
 ---
 
 # 🖥️ Command Center
 
-![NETRA Command Center](docs/images/Screenshot%202026-09-30%20002843.png)
+The command center acts as the operator-facing monitoring layer of NETRA.
 
-The live command center acts as the operator-facing monitoring layer.
-
-### Dashboard Modules
+### Dashboard Capabilities
 
 * 🗺️ Mine / haul-road map
-* 🚛 Vehicle tracking
-* ⚠️ Alert feed
-* 📊 Analytics
-* 🛣️ Visibility monitoring
-* 🚨 Incident monitoring
-* 📡 Network status
-* 🔄 Real-time telemetry
+* 🚛 Vehicle locations
+* ⚠️ Active alerts
+* 📊 Vehicle telemetry
+* 🚨 Incident information
+* 📡 Communication status
+* 🛣️ Route and blind-curve information
+* 🔄 Real-time updates
 
-### 🌐 Live Dashboard
+### 🚀 Live Dashboard
 
-**[🚀 Open NETRA Command Center](https://sih-2026-netra.vercel.app/#/command-center)**
+<p align="center">
+
+<a href="https://sih-2026-netra.vercel.app/#/command-center">
+  <strong>OPEN NETRA COMMAND CENTER →</strong>
+</a>
+
+</p>
 
 ---
 
@@ -412,7 +469,7 @@ The live command center acts as the operator-facing monitoring layer.
 React
 TypeScript
 Vite
-Map-based visualization
+Map-based Visualization
 WebSocket
 ```
 
@@ -423,15 +480,15 @@ Python
 FastAPI
 SQLAlchemy
 Alembic
-WebSocket
 REST APIs
+WebSocket
 ```
 
-## Embedded
+## Embedded Systems
 
 ```text
 ESP32
-C/C++
+C / C++
 GPS
 LoRa
 nRF24
@@ -439,14 +496,14 @@ OLED
 Sensors
 ```
 
-## AI / Computer Vision Architecture
+## AI / Computer Vision
 
 ```text
 Edge AI
-TinyML
-YOLO-based vision processing
-Computer Vision
 Sensor Fusion
+Computer Vision
+Object Detection
+YOLO-based Vision Processing
 ```
 
 ---
@@ -493,9 +550,9 @@ Netra/
 │
 ├── docs/
 │   └── images/
-│       ├── IMG_20260929_163046.jpg.jpeg
-│       ├── IMG_20260929_163059.jpg.jpeg
-│       └── Screenshot 2026-09-30 002843.png
+│       ├── netra-architecture.png
+│       ├── netra-hardware-front.jpg
+│       └── netra-hardware-top.jpg
 │
 ├── package.json
 ├── package-lock.json
@@ -512,6 +569,8 @@ Netra/
 git clone https://github.com/1Fahad-2/Netra.git
 cd Netra
 ```
+
+---
 
 ## 2. Backend Setup
 
@@ -555,6 +614,8 @@ Swagger documentation:
 http://127.0.0.1:8000/docs
 ```
 
+---
+
 ## 3. Frontend Setup
 
 Open another terminal:
@@ -575,8 +636,6 @@ http://127.0.0.1:5173
 
 # 🔌 Backend Communication
 
-NETRA exposes REST and WebSocket interfaces for telemetry and real-time communication.
-
 ```text
 ESP32 / Vehicle
       │
@@ -584,7 +643,7 @@ ESP32 / Vehicle
 Communication Layer
       │
       ▼
-FastAPI
+FastAPI Backend
       │
  ┌────┴────┐
  ▼         ▼
@@ -594,48 +653,50 @@ Database  WebSocket
        React Dashboard
 ```
 
+The backend provides the communication layer between vehicle telemetry, stored information, and the real-time command center.
+
 ---
 
-# 📊 Data Flow
+# 📊 End-to-End Data Flow
 
 ```text
-┌────────────────────┐
-│ GPS / Sensors      │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ ESP32 Edge Layer   │
-└─────────┬──────────┘
-          ▼
-┌────────────────────┐
-│ Risk Assessment    │
-│ & Sensor Fusion    │
-└─────────┬──────────┘
-          │
-     ┌────┴────┐
-     ▼         ▼
- Local       Remote
- Safety      Telemetry
-     │         │
-     ▼         ▼
-OLED/LED    Communication
-/Buzzer         │
-                ▼
+┌──────────────────────┐
+│ GPS / Sensors        │
+└──────────┬───────────┘
+           ▼
+┌──────────────────────┐
+│ ESP32 Edge Layer     │
+└──────────┬───────────┘
+           ▼
+┌──────────────────────┐
+│ Sensor Fusion &      │
+│ Risk Assessment      │
+└──────────┬───────────┘
+           │
+      ┌────┴─────┐
+      ▼          ▼
+   Local       Remote
+   Safety      Telemetry
+      │          │
+      ▼          ▼
+ OLED/LED/   Communication
+  Buzzer          │
+                  ▼
           FastAPI Backend
-                │
-        ┌───────┴───────┐
-        ▼               ▼
-    Database        WebSocket
-                        │
-                        ▼
-                React Dashboard
+                  │
+          ┌───────┴───────┐
+          ▼               ▼
+      Database        WebSocket
+                          │
+                          ▼
+                  React Dashboard
 ```
 
 ---
 
 # 🧪 Prototype Status
 
-NETRA is an **SIH 2026 prototype** integrating:
+NETRA is an **SIH 2026 research and demonstration prototype** combining:
 
 ```text
 Hardware
@@ -657,7 +718,7 @@ Database
 Real-Time React Dashboard
 ```
 
-The prototype demonstrates how local vehicle safety mechanisms can work together with centralized fleet monitoring.
+The prototype demonstrates the integration of **vehicle-level safety assistance and centralized fleet monitoring** for open-cast mining environments.
 
 ---
 
@@ -665,15 +726,15 @@ The prototype demonstrates how local vehicle safety mechanisms can work together
 
 Potential future improvements include:
 
-* 📍 RTK-GPS for high-precision positioning
-* 📡 Industrial-grade communication
+* 📍 RTK-GPS for higher positioning accuracy
+* 📡 Industrial-grade communication systems
 * 📡 Long-range radar / LiDAR
-* 👁️ Advanced AI camera monitoring
+* 👁️ Advanced AI-based camera monitoring
 * 🌡️ Thermal sensing
 * 😴 Driver fatigue monitoring
 * 🛣️ Road-condition monitoring
-* 🚛 Fleet-wide deployment
-* 📱 Emergency GSM/SMS communication
+* 🚛 Fleet-scale deployment
+* 📱 Emergency communication
 * 🧠 Advanced sensor-fusion models
 * ☁️ Historical fleet analytics
 * 🔐 Industrial cybersecurity
@@ -704,7 +765,7 @@ Real-world mining deployment would require:
 
 ### NETRA — SIH 2026
 
-The project combines expertise across:
+The project combines work across:
 
 | Area             | Responsibility                     |
 | ---------------- | ---------------------------------- |
@@ -726,13 +787,19 @@ NETRA is developed as part of **Smart India Hackathon (SIH) 2026**, focusing on 
 
 # ⭐ NETRA
 
-### **Sense. Communicate. Warn. Protect.**
-
 <p align="center">
 
-🚛 **Vehicle Safety**   •  
-📡 **V2V Communication**   •  
-🧠 **Edge Intelligence**   •  
+### **Sense. Communicate. Warn. Protect.**
+
+🚛 **Vehicle Safety**
+📡 **V2V Communication**
+🧠 **Edge Intelligence**
 🖥️ **Live Command Center**
+
+<br>
+
+<a href="https://sih-2026-netra.vercel.app/#/command-center">
+  🚀 <strong>EXPLORE THE LIVE NETRA COMMAND CENTER</strong>
+</a>
 
 </p>
