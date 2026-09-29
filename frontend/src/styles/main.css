@@ -1,0 +1,161 @@
+@import './tokens.css';
+
+/* Global Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Tabular numbers for all operational metrics and coordinates */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Display Font Utility */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Technical Hairline Borders */
+.border-b-line {
+  border-bottom: 1px solid var(--line);
+}
+
+.border-t-line {
+  border-top: 1px solid var(--line);
+}
+
+.border-l-line {
+  border-left: 1px solid var(--line);
+}
+
+.border-r-line {
+  border-right: 1px solid var(--line);
+}
+
+/* Status Indicators */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.status-dot.green {
+  background-color: var(--safe-green);
+  box-shadow: 0 0 6px var(--safe-green);
+}
+
+.status-dot.amber {
+  background-color: var(--warn-amber);
+  box-shadow: 0 0 6px var(--warn-amber);
+}
+
+.status-dot.red {
+  background-color: var(--crit-red);
+  box-shadow: 0 0 6px var(--crit-red);
+}
+
+.status-dot.blue {
+  background-color: var(--accent-blue);
+  box-shadow: 0 0 6px var(--accent-blue);
+}
+
+.status-dot.gray {
+  background-color: var(--text-muted);
+}
+
+/* Chip Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-display);
+}
+
+.status-badge.neutral {
+  background-color: var(--bg-panel-elevated);
+  border: 1px solid var(--line);
+  color: var(--text-secondary);
+}
+
+.status-badge.green {
+  background-color: var(--safe-green-subtle);
+  border: 1px solid var(--safe-green-border);
+  color: var(--safe-green);
+}
+
+.status-badge.amber {
+  background-color: var(--warn-amber-subtle);
+  border: 1px solid var(--warn-amber-border);
+  color: var(--warn-amber);
+}
+
+.status-badge.red {
+  background-color: var(--crit-red-subtle);
+  border: 1px solid var(--crit-red-border);
+  color: var(--crit-red);
+}
+
+.status-badge.blue {
+  background-color: var(--accent-blue-subtle);
+  border: 1px solid var(--accent-blue-border);
+  color: var(--accent-blue);
+}
+
+/* Scrollbars for technical panels */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line-highlight);
+}
+
+/* ── Phase 2D: conflict corridor overlay label pulse animation ─────────────── */
+@keyframes pulseRed {
+  0%   { box-shadow: 0 2px 12px rgba(200, 0, 0, 0.5); opacity: 1; }
+  50%  { box-shadow: 0 2px 20px rgba(255, 60, 60, 0.9); opacity: 0.85; }
+  100% { box-shadow: 0 2px 12px rgba(200, 0, 0, 0.5); opacity: 1; }
+}
