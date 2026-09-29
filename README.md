@@ -19,25 +19,13 @@ Netra is a smart safety-assistance and monitoring system designed for **open-cas
 
 🧠 **System Architecture**
 
-GPS + Sensors
-      │
-      ▼
-ESP32 / STM32 Edge Controller
-      │
-      ▼
-Risk Assessment + Edge AI
-      │
-      ├───────────────┐
-      ▼               ▼
-Local Alerts     Communication
-Buzzer / LED     Internet / LoRa / nRF24
-      │               │
-      └───────┬───────┘
-              ▼
-       Command Center
-              │
-              ▼
-       React + FastAPI
+**GPS + Sensors**
+**ESP32 / STM32 Edge Controller**
+**Risk Assessment + Edge AI**
+**Local Alerts     Communication
+Buzzer / LED     Internet / LoRa / nRF24**
+      ** Command Center**
+    **   React + FastAPI**
 
 🚦 **Risk Classification**
 
