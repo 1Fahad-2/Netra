@@ -689,7 +689,7 @@ The prototype should **not be treated as a certified autonomous vehicle-control 
 | Backend          | FastAPI, database and WebSocket        |
 | Frontend         | React command center                   |
 | Hardware         | Circuit, PCB and prototype integration |
-| Communication    | LoRa / nRF24 / V2V                     |
+| Communication    | LoRa / nRF24 / V2V / V2I                    |
 
 ---
 
