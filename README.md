@@ -6,12 +6,12 @@
 
 <p align="center">
 
-**NETRA** is a multi-layer safety-assistance system designed for open-cast mining haul roads, combining **Edge AI, sensor fusion, V2V communication, vehicle telemetry, local driver alerts, and a real-time command center**.
+NETRA is a multi-layer safety-assistance system designed for open-cast mining haul roads, combining **Edge AI, sensor fusion, V2V communication, vehicle telemetry, local driver alerts, and a real-time command center**.
 
-<br/>
+<br><br>
 
 <a href="https://sih-2026-netra.vercel.app/#/command-center">
-  <strong>🚀 Open Live Command Center</strong>
+  <strong>🚀 OPEN LIVE COMMAND CENTER</strong>
 </a>
 
 </p>
@@ -22,7 +22,8 @@
 
 ### 🖥️ NETRA Command Center
 
-👉 **Live Dashboard:** https://sih-2026-netra.vercel.app/#/command-center
+👉 **Live Dashboard:**
+https://sih-2026-netra.vercel.app/#/command-center
 
 The command center provides a centralized view of:
 
@@ -57,7 +58,9 @@ Traditional monitoring can depend heavily on driver visibility, manual observati
 
 # 💡 NETRA Solution
 
-NETRA combines **on-vehicle sensing + Edge processing + V2V communication + long-range communication + centralized monitoring**.
+NETRA combines:
+
+**On-Vehicle Sensing + Edge Processing + V2V Communication + Long-Range Communication + Centralized Monitoring**
 
 ### Safety Pipeline
 
@@ -85,7 +88,7 @@ Buzzer                                  Backend
 
 # 🏗️ System Architecture
 
-![NETRA System Architecture](docs/images/netra-architecture.png)
+![NETRA System Architecture](docs/IMG_20260929_163059.jpg.jpeg)
 
 NETRA follows a layered architecture:
 
@@ -145,8 +148,6 @@ NETRA can integrate sensor information such as:
 
 Local processing enables rapid safety decisions without requiring every decision to travel to a remote server.
 
-The architecture supports:
-
 ```text
 Sensor Data
      ↓
@@ -160,8 +161,6 @@ Safety State
 ```
 
 ## 📡 Multi-Layer Communication
-
-NETRA combines:
 
 | Communication    | Purpose                               |
 | ---------------- | ------------------------------------- |
@@ -210,7 +209,9 @@ The dashboard provides:
 
 # 🚗 Prototype Hardware
 
-![NETRA Prototype](docs/images/netra-hardware-front.jpg)
+### Front View
+
+![NETRA Hardware Front](docs/images/IMG_20260929_163046.jpg.jpeg)
 
 The NETRA prototype integrates an embedded controller, vehicle drive system, sensing modules, communication modules, GPS, display interfaces, and local warning components.
 
@@ -231,9 +232,9 @@ The NETRA prototype integrates an embedded controller, vehicle drive system, sen
 | Motor Driver       | Prototype vehicle movement               |
 | DC Motors          | Vehicle propulsion                       |
 
-### Prototype — Top View
+### Top View
 
-![NETRA Hardware Top View](docs/images/netra-hardware-top.jpg)
+![NETRA Hardware Top View](docs/images/IMG_20260929_163059.jpg.jpeg)
 
 ---
 
@@ -251,7 +252,7 @@ Camera
 Motion Sensors
 Communication Modules
         ↓
-    ESP32
+      ESP32
 ```
 
 ## Step 2 — Local Processing
@@ -382,7 +383,7 @@ Potential model inputs include:
 
 # 🖥️ Command Center
 
-![NETRA Command Center](docs/images/netra-dashboard.png)
+![NETRA Command Center](docs/images/Screenshot%202026-09-30%20002843.png)
 
 The live command center acts as the operator-facing monitoring layer.
 
@@ -397,7 +398,7 @@ The live command center acts as the operator-facing monitoring layer.
 * 📡 Network status
 * 🔄 Real-time telemetry
 
-### Live Dashboard
+### 🌐 Live Dashboard
 
 **[🚀 Open NETRA Command Center](https://sih-2026-netra.vercel.app/#/command-center)**
 
@@ -491,7 +492,10 @@ Netra/
 │       └── esp32_hemm_telemetry.ino
 │
 ├── docs/
-│   └── ...
+│   └── images/
+│       ├── IMG_20260929_163046.jpg.jpeg
+│       ├── IMG_20260929_163059.jpg.jpeg
+│       └── Screenshot 2026-09-30 002843.png
 │
 ├── package.json
 ├── package-lock.json
@@ -508,8 +512,6 @@ Netra/
 git clone https://github.com/1Fahad-2/Netra.git
 cd Netra
 ```
-
----
 
 ## 2. Backend Setup
 
@@ -552,8 +554,6 @@ Swagger documentation:
 ```text
 http://127.0.0.1:8000/docs
 ```
-
----
 
 ## 3. Frontend Setup
 
@@ -724,7 +724,7 @@ NETRA is developed as part of **Smart India Hackathon (SIH) 2026**, focusing on 
 
 ---
 
-## ⭐ NETRA
+# ⭐ NETRA
 
 ### **Sense. Communicate. Warn. Protect.**
 
