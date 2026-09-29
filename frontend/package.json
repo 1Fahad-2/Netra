@@ -1,0 +1,36 @@
+{
+  "name": "netra-command-center",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "npx ts-node src/map/calibration/terrainCalibration.test.ts",
+    "test:compact-event": "npx ts-node src/services/compactEventAdapter.test.ts",
+    "test:sensor-health": "npx ts-node src/types/sensorHealth.test.ts",
+    "test:sensor-health-ui": "npx ts-node src/utils/sensorHealthDisplay.test.ts",
+    "test:network-sync-ui": "npx ts-node src/utils/networkSyncDisplay.test.ts",
+    "test:final-risk-alert-ui": "npx ts-node src/utils/finalRiskDisplay.test.ts"
+  },
+  "dependencies": {
+    "@deck.gl/core": "^9.4.0",
+    "@deck.gl/layers": "^9.4.0",
+    "@deck.gl/mapbox": "^9.4.0",
+    "@deck.gl/react": "^9.4.0",
+    "lucide-react": "^1.16.0",
+    "mapbox-gl": "^3.31.0",
+    "maplibre-gl": "^6.9.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}

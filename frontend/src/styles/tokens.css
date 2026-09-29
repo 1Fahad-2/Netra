@@ -1,0 +1,59 @@
+/**
+ * MachineMind — Industrial Design Tokens
+ * Source: MachineMind_CommandCenter_Blueprint.md (§9)
+ */
+
+:root {
+  /* Color Palette - Dark Industrial Mining Control Room */
+  --bg-base: #000000;               /* Pure black main background */
+  --bg-panel: #111927;              /* Cockpit strips, framing, panels */
+  --bg-panel-hover: #162235;        /* Interactive panel hover */
+  --bg-panel-elevated: #1a263a;     /* Raised elements/chips */
+  --bg-panel-muted: #0c121e;        /* Recessed containers */
+
+  /* Hairlines and Dividers */
+  --line: #233047;                  /* Subtle 1px structural hairline */
+  --line-subtle: #192336;           /* Faint interior divider */
+  --line-highlight: #344768;        /* Active border, demo cluster dashed border */
+  --line-accent: #2F6FF0;           /* Active selected hairline */
+
+  /* Typography Colors */
+  --text-primary: #E4EAF3;          /* Main headings, critical values, active text */
+  --text-secondary: #A0B0C8;        /* Informational labels, secondary readouts */
+  --text-muted: #7C8AA3;            /* Meta timestamps, inactive text, units */
+  --text-disabled: #475467;         /* Disabled navigation items */
+
+  /* Primary System Accents */
+  --accent-blue: #2F6FF0;           /* Electric blue primary accent */
+  --accent-blue-subtle: rgba(47, 111, 240, 0.12);
+  --accent-blue-border: rgba(47, 111, 240, 0.4);
+
+  /* Secondary Accent - Selection Glow Only (Reserved) */
+  --accent-violet: #6C5CE7;
+  --accent-violet-subtle: rgba(108, 92, 231, 0.15);
+  --accent-violet-border: rgba(108, 92, 231, 0.45);
+
+  /* Safety & Operational Risk Semantics */
+  --safe-green: #2FBF71;            /* LOW risk / Safe state / Healthy */
+  --safe-green-subtle: rgba(47, 191, 113, 0.12);
+  --safe-green-border: rgba(47, 191, 113, 0.35);
+
+  --warn-amber: #E6A93A;            /* MEDIUM risk / Degraded visibility / Warning */
+  --warn-amber-subtle: rgba(230, 169, 58, 0.12);
+  --warn-amber-border: rgba(230, 169, 58, 0.35);
+
+  --crit-red: #E5484D;              /* HIGH risk / Critical alert / Failure */
+  --crit-red-subtle: rgba(229, 72, 77, 0.12);
+  --crit-red-border: rgba(229, 72, 77, 0.4);
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Dimensions */
+  --nav-rail-width: 56px;
+  --top-strip-height: 50px;
+  --bottom-strip-height: 80px;
+  --right-panel-width: 320px;
+}
